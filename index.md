@@ -1,3 +1,12 @@
+<script
+  type="module"
+  src="https://unpkg.com/@nocodeapi/embed-instagram-feed@latest/embed-instagram-feed.js?module"
+></script>
+
+
+
+
+
 ## Welcome to GitHub Pages
 
 You can use the [editor on GitHub](https://github.com/facettractive/facettractive/edit/gh-pages/index.md) to maintain and preview the content for your website in Markdown files.
