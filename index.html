@@ -2,14 +2,79 @@
 <html>
   <head>
     <title>Embed Instagram Feed</title>
-    <script
-      type="module"
-      src="https://unpkg.com/@nocodeapi/embed-instagram-feed@latest/embed-instagram-feed.js?module"
-    ></script>
   </head>
   <body>
-    <embed-instagram-feed
-      url="https://v1.nocodeapi.com/facettractive/instagram/JNeJCgwUguYxGqsN"
-    ></embed-instagram-feed>
+
+    
+    
+    
+    <section class="section-instagram">
+    <div class="container">
+        <h2>Integration Instagram API</h2>
+        <div class="row justify-content-center" data-type="wrapper">
+            <!-- JS -->
+        </div>
+    </div>
+</section>
+
+
+<script>
+
+function template(item) {
+    return `<div class="col-12 col-md-3">
+                <div class="card">
+                    <img src="${item.media_url}" class="card-img-top" alt="image">
+                    <div class="card-body">
+                        <p class="card-text">${item.caption}</p>
+                    </div>
+                </div>
+            </div>`;
+}
+
+axios
+    .get(
+        "https://graph.instagram.com/me/media?fields=id,media_type,media_url,thumbnail_url,caption,timestamp,permalink&access_token=IGQVJWdjc0Vk5QOHdPcXFfc084YjctU2tPSzU5S0VGSmRsazNNSF94aGVvUmZA2LU55WHJQTTlXcDJIRWNLcG1Wa0hOSFF3Y0FVNUpnMi1DR2FlTnFEaEhkeWgtVkZAWekxwb195eENwY1B5SXlBMGVJRwZDZD"
+    )
+    .then((r) => {
+        const result = r.data.data;
+        result.forEach((e, i) => {
+            if (e.media_type === "IMAGE") {
+                $('[data-type="wrapper"]').append(template(e));
+            }
+        });
+    })
+    .catch((e) => console.warn(e));
+    
+    
+    </script>
+    
+    
+    
+    
+    <style>.section-instagram {
+    position: relative;
+    width: 100%;
+    height: 100vh;
+    background-color: #eee;
+    text-align: center;
+    padding: 30px 0;
+
+    h2 {
+        text-transform: uppercase;
+        margin-bottom: 40px;
+    }
+
+    .card {
+        width: 100%;
+    }
+}
+
+
+</style>
+    
+    
+    
+    
+    
   </body>
 </html>
