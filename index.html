@@ -7,34 +7,61 @@
   <title>Facettractive</title>
 </head>
 <body>
-  	<h1 style="text-align: center">Latest Posts</h1>
-    	<div id="instafeed-container"></div>
+  	<div class="instacontainer">
+    <h1 style="text-align: center">Latest Posts</h1>
+    	<div id="instafeed" class="instafeed"></div>
 
-
+  </div>
 
 	<script src="https://cdn.jsdelivr.net/gh/stevenschobert/instafeed.js@2.0.0rc1/src/instafeed.min.js"></script>
 	<script type="text/javascript">
 	var userFeed = new Instafeed({
 		get: 'user',
-		target: "instafeed-container",
+		target: "instafeed",
     	resolution: 'high_resolution',
     template: 	'<a href="{{link}}"><img title="{{caption}}" src="{{image}}"/></a>',
 		accessToken: 'IGQVJWdjc0Vk5QOHdPcXFfc084YjctU2tPSzU5S0VGSmRsazNNSF94aGVvUmZA2LU55WHJQTTlXcDJIRWNLcG1Wa0hOSFF3Y0FVNUpnMi1DR2FlTnFEaEhkeWgtVkZAWekxwb195eENwY1B5SXlBMGVJRwZDZD'
 	});
 	userFeed.run();
 	</script>
+  
+
 </body>
 
 <style>
 img {
-width: 216px;
+width: 250px;
 height: 100%;
-margin: 5px;
+margin: 8px;
+  transition: 0.2s;
+      box-shadow: 0px 0px 0px 1px rgba(255,255,255,0.1);
+
+
 }
+
+img:hover {
+  opacity: 0.25;
+  transform: scale(1.02);
+  text-decoration: none;
+  transition: 0.2s;
+}
+
+.instacontainer {
+  padding: 0.5em 1em 1em;
+  max-width: calc(1100px + 1em);
+  max-height: calc(1050px + 1em);
+  margin: 0 auto;
+  overflow: hidden;
+}
+
+
+
 
 body {background:black; text-align: center}
 
 h1 {color:white}
+
+
 </style>
 
 
