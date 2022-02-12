@@ -1,80 +1,41 @@
 <!DOCTYPE html>
-<html>
-  <head>
-    <title>Embed Instagram Feed</title>
-  </head>
-  <body>
-
-    
-    
-    
-    <section class="section-instagram">
-    <div class="container">
-        <h2>Integration Instagram API</h2>
-        <div class="row justify-content-center" data-type="wrapper">
-            <!-- JS -->
-        </div>
-    </div>
-</section>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Facettractive</title>
+</head>
+<body>
+  	<h1 style="text-align: center">Latest Posts</h1>
+    	<div id="instafeed-container"></div>
 
 
-<script>
 
-function template(item) {
-    return `<div class="col-12 col-md-3">
-                <div class="card">
-                    <img src="${item.media_url}" class="card-img-top" alt="image">
-                    <div class="card-body">
-                        <p class="card-text">${item.caption}</p>
-                    </div>
-                </div>
-            </div>`;
+	<script src="https://cdn.jsdelivr.net/gh/stevenschobert/instafeed.js@2.0.0rc1/src/instafeed.min.js"></script>
+	<script type="text/javascript">
+	var userFeed = new Instafeed({
+		get: 'user',
+		target: "instafeed-container",
+    	resolution: 'high_resolution',
+    template: 	'<a href="{{link}}"><img title="{{caption}}" src="{{image}}"/></a>',
+		accessToken: 'IGQVJWdjc0Vk5QOHdPcXFfc084YjctU2tPSzU5S0VGSmRsazNNSF94aGVvUmZA2LU55WHJQTTlXcDJIRWNLcG1Wa0hOSFF3Y0FVNUpnMi1DR2FlTnFEaEhkeWgtVkZAWekxwb195eENwY1B5SXlBMGVJRwZDZD'
+	});
+	userFeed.run();
+	</script>
+</body>
+
+<style>
+img {
+width: 216px;
+height: 100%;
+margin: 5px;
 }
 
-axios
-    .get(
-        "https://graph.instagram.com/me/media?fields=id,media_type,media_url,thumbnail_url,caption,timestamp,permalink&access_token=IGQVJWdjc0Vk5QOHdPcXFfc084YjctU2tPSzU5S0VGSmRsazNNSF94aGVvUmZA2LU55WHJQTTlXcDJIRWNLcG1Wa0hOSFF3Y0FVNUpnMi1DR2FlTnFEaEhkeWgtVkZAWekxwb195eENwY1B5SXlBMGVJRwZDZD"
-    )
-    .then((r) => {
-        const result = r.data.data;
-        result.forEach((e, i) => {
-            if (e.media_type === "IMAGE") {
-                $('[data-type="wrapper"]').append(template(e));
-            }
-        });
-    })
-    .catch((e) => console.warn(e));
-    
-    
-    </script>
-    
-    
-    
-    
-    <style>.section-instagram {
-    position: relative;
-    width: 100%;
-    height: 100vh;
-    background-color: #eee;
-    text-align: center;
-    padding: 30px 0;
+body {background:black; text-align: center}
 
-    h2 {
-        text-transform: uppercase;
-        margin-bottom: 40px;
-    }
-
-    .card {
-        width: 100%;
-    }
-}
-
-
+h1 {color:white}
 </style>
-    
-    
-    
-    
-    
-  </body>
+
+
 </html>
